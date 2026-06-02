@@ -1,0 +1,163 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "productName": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "productName",
+      "required": true
+    },
+    "category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::category.category"
+    },
+    "tagline": {
+      "type": "string",
+      "required": true
+    },
+    "valueProposition": {
+      "type": "text",
+      "required": true
+    },
+    "mainImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "galleryImages": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "price": {
+      "type": "decimal",
+      "required": true
+    },
+    "comparePrice": {
+      "type": "decimal",
+      "required": true
+    },
+    "featured": {
+      "type": "boolean"
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "keyBenefits": {
+      "type": "component",
+      "component": "product.benefit",
+      "repeatable": true,
+      "required": false
+    },
+    "ingredients": {
+      "type": "text",
+      "required": false
+    },
+    "whyCustomersLoveIt": {
+      "type": "text"
+    },
+    "whoCanUseIt": {
+      "type": "text"
+    },
+    "bestFor": {
+      "type": "string"
+    },
+    "purityInformation": {
+      "type": "text"
+    },
+    "productFeatures": {
+      "type": "text"
+    },
+    "productHighlights": {
+      "type": "text"
+    },
+    "herbalProfile": {
+      "type": "text"
+    },
+    "ayurvedicProfile": {
+      "type": "component",
+      "component": "product.ayurvedic-profile",
+      "repeatable": false
+    },
+    "usageInfo": {
+      "type": "component",
+      "component": "product.usage-info",
+      "repeatable": false,
+      "required": false
+    },
+    "benefitsTable": {
+      "type": "component",
+      "component": "product.benefit-row",
+      "repeatable": true
+    },
+    "usageTable": {
+      "type": "component",
+      "component": "product.usage-row",
+      "repeatable": true
+    },
+    "faqs": {
+      "type": "component",
+      "component": "product.faq",
+      "repeatable": true
+    },
+    "safetyInformation": {
+      "type": "text"
+    },
+    "precautions": {
+      "type": "text"
+    },
+    "ctaText": {
+      "type": "string"
+    },
+    "trustBuildingText": {
+      "type": "text"
+    },
+    "whyChooseUs": {
+      "type": "text"
+    },
+    "productComparison": {
+      "type": "component",
+      "component": "product.comparison-point",
+      "repeatable": true
+    },
+    "seo": {
+      "type": "component",
+      "component": "shared.seo",
+      "repeatable": false
+    },
+    "relatedTo": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product.product",
+      "inversedBy": "relatedProducts"
+    },
+    "relatedProducts": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product.product",
+      "mappedBy": "relatedTo"
+    }
+  }
+}

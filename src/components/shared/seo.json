@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_shared_seos",
+  "info": {
+    "displayName": "SEO"
+  },
+  "options": {},
+  "attributes": {
+    "metaTitle": {
+      "type": "string"
+    },
+    "metaDescription": {
+      "type": "text"
+    },
+    "seoProductDescription": {
+      "type": "text"
+    },
+    "keywords": {
+      "type": "text"
+    },
+    "productTags": {
+      "type": "text"
+    },
+    "searchKeywords": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}

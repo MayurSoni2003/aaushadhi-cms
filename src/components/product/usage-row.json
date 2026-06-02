@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_product_usage_rows",
+  "info": {
+    "displayName": "Usage Row"
+  },
+  "options": {},
+  "attributes": {
+    "dosage": {
+      "type": "string",
+      "required": true
+    },
+    "mixingVehicle": {
+      "type": "string"
+    },
+    "frequency": {
+      "type": "string"
+    },
+    "optimalTiming": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

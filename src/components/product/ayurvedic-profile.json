@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_product_ayurvedic_profiles",
+  "info": {
+    "displayName": "Ayurvedic Profile"
+  },
+  "options": {},
+  "attributes": {
+    "rasa": {
+      "type": "string"
+    },
+    "guna": {
+      "type": "string"
+    },
+    "virya": {
+      "type": "string"
+    },
+    "vipaka": {
+      "type": "string"
+    },
+    "doshaKarma": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

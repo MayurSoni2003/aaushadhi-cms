@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_product_benefit_rows",
+  "info": {
+    "displayName": "Benefit Row"
+  },
+  "options": {},
+  "attributes": {
+    "targetArea": {
+      "type": "string",
+      "required": true
+    },
+    "mechanism": {
+      "type": "string",
+      "required": true
+    },
+    "expectedOutcome": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "config": {}
+}

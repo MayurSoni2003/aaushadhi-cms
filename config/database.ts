@@ -1,6 +1,12 @@
 import path from 'path';
 import type { Core } from '@strapi/strapi';
 
+console.log("========== DATABASE DEBUG ==========");
+console.log("DATABASE_CLIENT =", process.env.DATABASE_CLIENT);
+console.log("DATABASE_URL =", !!process.env.DATABASE_URL);
+console.log("DATABASE_HOST =", process.env.DATABASE_HOST);
+console.log("====================================");
+
 const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Database => {
   const client = env('DATABASE_CLIENT', 'sqlite');
 

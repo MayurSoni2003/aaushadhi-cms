@@ -1,0 +1,114 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "singularName": "order",
+    "pluralName": "orders",
+    "displayName": "Order"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "customerName": {
+      "type": "string",
+      "required": true
+    },
+    "customerPhone": {
+      "type": "string",
+      "required": true
+    },
+    "customerEmail": {
+      "type": "email",
+      "required": false
+    },
+    "orderId": {
+      "type": "uid",
+      "required": true
+    },
+    "orderStatus": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "pending",
+        "confirmed",
+        "processing",
+        "shipped",
+        "delivered",
+        "cancelled",
+        "returned"
+      ]
+    },
+    "paymentMethod": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "cod",
+        "online"
+      ]
+    },
+    "paymentStatus": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "pending",
+        "paid",
+        "failed",
+        "refunded"
+      ]
+    },
+    "subtotal": {
+      "type": "decimal",
+      "required": true
+    },
+    "shippingCost": {
+      "type": "decimal",
+      "required": true
+    },
+    "totalAmount": {
+      "type": "decimal",
+      "required": true
+    },
+    "shippingAddress": {
+      "type": "component",
+      "component": "order.shipping-address",
+      "repeatable": false,
+      "required": true
+    },
+    "orderItem": {
+      "type": "component",
+      "component": "order.order-item",
+      "repeatable": true
+    },
+    "courierName": {
+      "type": "string",
+      "required": true
+    },
+    "courierEstimate": {
+      "type": "string",
+      "required": true
+    },
+    "icarryShipmentId": {
+      "type": "string"
+    },
+    "trackingId": {
+      "type": "string"
+    },
+    "trackingUrl": {
+      "type": "string"
+    },
+    "labelUrl": {
+      "type": "string"
+    },
+    "paymentGatewayOrderId": {
+      "type": "string"
+    },
+    "paymentGatewayPaymentId": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "text"
+    }
+  }
+}

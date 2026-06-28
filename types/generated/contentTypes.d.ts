@@ -471,6 +471,70 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
+  collectionName: 'orders';
+  info: {
+    displayName: 'Order';
+    pluralName: 'orders';
+    singularName: 'order';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    courierEstimate: Schema.Attribute.String & Schema.Attribute.Required;
+    courierName: Schema.Attribute.String & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    customerEmail: Schema.Attribute.Email;
+    customerName: Schema.Attribute.String & Schema.Attribute.Required;
+    customerPhone: Schema.Attribute.String & Schema.Attribute.Required;
+    icarryShipmentId: Schema.Attribute.String;
+    labelUrl: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::order.order'> &
+      Schema.Attribute.Private;
+    notes: Schema.Attribute.Text;
+    orderId: Schema.Attribute.UID & Schema.Attribute.Required;
+    orderItem: Schema.Attribute.Component<'order.order-item', true>;
+    orderStatus: Schema.Attribute.Enumeration<
+      [
+        'pending',
+        'confirmed',
+        'processing',
+        'shipped',
+        'delivered',
+        'cancelled',
+        'returned',
+      ]
+    > &
+      Schema.Attribute.Required;
+    paymentGatewayOrderId: Schema.Attribute.String;
+    paymentGatewayPaymentId: Schema.Attribute.String;
+    paymentMethod: Schema.Attribute.Enumeration<['cod', 'online']> &
+      Schema.Attribute.Required;
+    paymentStatus: Schema.Attribute.Enumeration<
+      ['pending', 'paid', 'failed', 'refunded']
+    > &
+      Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    shippingAddress: Schema.Attribute.Component<
+      'order.shipping-address',
+      false
+    > &
+      Schema.Attribute.Required;
+    shippingCost: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    subtotal: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    totalAmount: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    trackingId: Schema.Attribute.String;
+    trackingUrl: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiProductProduct extends Struct.CollectionTypeSchema {
   collectionName: 'products';
   info: {
@@ -1053,6 +1117,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::category.category': ApiCategoryCategory;
+      'api::order.order': ApiOrderOrder;
       'api::product.product': ApiProductProduct;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

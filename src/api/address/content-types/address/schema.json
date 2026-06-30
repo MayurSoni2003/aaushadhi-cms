@@ -1,9 +1,15 @@
 {
-  "collectionName": "components_order_shipping_addresses",
+  "kind": "collectionType",
+  "collectionName": "addresses",
   "info": {
-    "displayName": "Shipping Address"
+    "singularName": "address",
+    "pluralName": "addresses",
+    "displayName": "Address"
   },
-  "options": {},
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
   "attributes": {
     "name": {
       "type": "string",
@@ -34,8 +40,17 @@
     },
     "country": {
       "type": "string",
-      "required": true
+      "default": "IN"
+    },
+    "isDefault": {
+      "type": "boolean",
+      "default": false
+    },
+    "customer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::customer.customer",
+      "inversedBy": "addresses"
     }
-  },
-  "config": {}
+  }
 }

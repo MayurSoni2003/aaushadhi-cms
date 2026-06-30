@@ -11,17 +11,15 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "customerName": {
-      "type": "string",
-      "required": true
-    },
-    "customerPhone": {
-      "type": "string",
-      "required": true
-    },
     "customerEmail": {
       "type": "email",
       "required": false
+    },
+    "customer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::customer.customer",
+      "inversedBy": "orders"
     },
     "orderId": {
       "type": "uid",
@@ -82,14 +80,6 @@
       "repeatable": true
     },
     "courierName": {
-      "type": "string",
-      "required": true
-    },
-    "courierEstimate": {
-      "type": "string",
-      "required": true
-    },
-    "icarryShipmentId": {
       "type": "string"
     },
     "trackingId": {
@@ -98,13 +88,13 @@
     "trackingUrl": {
       "type": "string"
     },
-    "labelUrl": {
-      "type": "string"
-    },
     "paymentGatewayOrderId": {
       "type": "string"
     },
     "paymentGatewayPaymentId": {
+      "type": "string"
+    },
+    "paymentGatewaySignature": {
       "type": "string"
     },
     "notes": {

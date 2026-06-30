@@ -25,6 +25,8 @@ export interface OrderShippingAddress extends Struct.ComponentSchema {
     addressLine2: Schema.Attribute.String;
     city: Schema.Attribute.String & Schema.Attribute.Required;
     country: Schema.Attribute.String & Schema.Attribute.Required;
+    mobile: Schema.Attribute.String & Schema.Attribute.Required;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
     pincode: Schema.Attribute.String & Schema.Attribute.Required;
     state: Schema.Attribute.String & Schema.Attribute.Required;
   };

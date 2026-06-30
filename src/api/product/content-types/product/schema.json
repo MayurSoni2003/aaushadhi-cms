@@ -20,10 +20,15 @@
       "targetField": "productName",
       "required": true
     },
+    "sku": {
+      "type": "string",
+      "unique": true
+    },
     "category": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::category.category"
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "products"
     },
     "tagline": {
       "type": "string",

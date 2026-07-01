@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "otp_sessions",
+  "info": {
+    "singularName": "otp-session",
+    "pluralName": "otp-sessions",
+    "displayName": "OTP Session"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "otpHash": {
+      "type": "string",
+      "required": true
+    },
+    "expiresAt": {
+      "type": "datetime",
+      "required": true
+    },
+    "attempts": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}

@@ -11,14 +11,8 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "firebaseUid": {
-      "type": "string",
-      "required": true,
-      "unique": true
-    },
     "phone": {
       "type": "string",
-      "required": true,
       "unique": true
     },
     "firstName": {
@@ -28,7 +22,9 @@
       "type": "string"
     },
     "email": {
-      "type": "email"
+      "type": "email",
+      "required": true,
+      "unique": true
     },
     "orders": {
       "type": "relation",

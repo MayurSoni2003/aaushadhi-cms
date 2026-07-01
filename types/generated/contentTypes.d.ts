@@ -524,8 +524,7 @@ export interface ApiCustomerCustomer extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    email: Schema.Attribute.Email;
-    firebaseUid: Schema.Attribute.String &
+    email: Schema.Attribute.Email &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
     firstName: Schema.Attribute.String;
@@ -537,9 +536,7 @@ export interface ApiCustomerCustomer extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     orders: Schema.Attribute.Relation<'oneToMany', 'api::order.order'>;
-    phone: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
+    phone: Schema.Attribute.String & Schema.Attribute.Unique;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -602,6 +599,37 @@ export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
     totalAmount: Schema.Attribute.Decimal & Schema.Attribute.Required;
     trackingId: Schema.Attribute.String;
     trackingUrl: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiOtpSessionOtpSession extends Struct.CollectionTypeSchema {
+  collectionName: 'otp_sessions';
+  info: {
+    displayName: 'OTP Session';
+    pluralName: 'otp-sessions';
+    singularName: 'otp-session';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    attempts: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email & Schema.Attribute.Required;
+    expiresAt: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::otp-session.otp-session'
+    > &
+      Schema.Attribute.Private;
+    otpHash: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1194,6 +1222,7 @@ declare module '@strapi/strapi' {
       'api::category.category': ApiCategoryCategory;
       'api::customer.customer': ApiCustomerCustomer;
       'api::order.order': ApiOrderOrder;
+      'api::otp-session.otp-session': ApiOtpSessionOtpSession;
       'api::product.product': ApiProductProduct;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
